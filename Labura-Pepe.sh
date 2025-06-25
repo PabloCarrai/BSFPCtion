@@ -33,9 +33,9 @@ fi
 
 FAPT="/etc/apt/apt.conf"
 CNT1="
-Acquire::http::Proxy  $1 ; 
-Acquire::https::Proxy  $1 ; 
-Acquire::ftp::Proxy $1 ;
+Acquire::http::Proxy  ""$1"" ;\n
+Acquire::https::Proxy  $1 ;\n
+Acquire::ftp::Proxy $1 ;\n
 "
 
 #   Veo si existe
