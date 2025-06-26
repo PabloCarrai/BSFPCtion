@@ -12,31 +12,22 @@ echo "Corriendo como pepe manda"
 VALOR="http_proxy $1"
 VALOR1="https_proxy $1"
 
-CNT="
-http_proxy $1
-https_proxy $1
-HTTP_PROXY $1
-HTTPS_PROXY $1 
-"
+CNT="http_proxy $1\nhttps_proxy $1\nHTTP_PROXY $1\nHTTPS_PROXY $1"
 
 #   Uno de los archivos a tocar es este
 FILE="/etc/environment"
 #   Veo si existe
 if [ -e $FILE ]
    then echo "El archivo existe"
-   echo "$CNT" > $FILE
+   echo -e "$CNT" > $FILE
 else
    echo "El archivo no existe"
    touch $FILE
-   echo "$CNT" > $FILE
+   echo -e "$CNT" > $FILE
 fi
 
 FAPT="/etc/apt/apt.conf"
-CNT1="
-Acquire::http::Proxy  ""$1"" ;\n
-Acquire::https::Proxy  $1 ;\n
-Acquire::ftp::Proxy $1 ;\n
-"
+CNT1="Acquire::http::Proxy \"$1\";\nAcquire::https::Proxy \"$1\";\nAcquire::ftp::Proxy \"$1\";\n"
 
 #   Veo si existe
 if [ -e $FAPT ]
@@ -45,5 +36,9 @@ if [ -e $FAPT ]
 else
    echo "El archivo no existe"
    touch $FAPT
-   echo $CNT1 > $FAPT
+   echo -e $CNT1 > $FAPT
 fi
+
+#	Faltaria ver como chequear que este instalado edge
+#	y como meter esto en la conf de firefox
+#microsoft-edge --proxy-server="http://10.0.0.100:8080" --proxy-bypass-list="*.google.com,localhost"
