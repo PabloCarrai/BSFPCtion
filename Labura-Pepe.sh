@@ -15,29 +15,24 @@ then echo "Necesitas permisos de root"
 exit 1
 fi
 
-
-if [[ $1 = "sinproxy" ]]
-   then rm $FILE $FAPT
+#   Veo si existe
+if [ -e $FILE ]
+then echo "El archivo existe"
+echo -e "$CNT" > $FILE
 else
-   #   Veo si existe
-   if [ -e $FILE ]
-      then echo "El archivo existe"
-      echo -e "$CNT" > $FILE
-   else
-      echo "El archivo no existe"
-      touch $FILE
-      echo -e "$CNT" > $FILE
-   fi
+echo "El archivo no existe"
+touch $FILE
+echo -e "$CNT" > $FILE
+fi
 
-   #   Veo si existe
-   if [ -e $FAPT ]
-      then echo "El archivo existe"
-      echo -e $CNT1 > $FAPT
-   else
-      echo "El archivo no existe"
-      touch $FAPT
-      echo -e $CNT1 > $FAPT
-   fi
+#   Veo si existe
+if [ -e $FAPT ]
+then echo "El archivo existe"
+echo -e $CNT1 > $FAPT
+else
+echo "El archivo no existe"
+touch $FAPT
+echo -e $CNT1 > $FAPT
 fi
 #	Faltaria ver como chequear que este instalado edge
 #	y como meter esto en la conf de firefox
