@@ -11,8 +11,8 @@ CNT1="Acquire::http::Proxy \"$1\";\nAcquire::https::Proxy \"$1\";\nAcquire::ftp:
 
 #   Necesitamos o ser root o tener sudo
 if [[ "$EUID" -ne 0 ]]
-   then echo "Necesitas permisos de root"
-   return -1
+then echo "Necesitas permisos de root"
+exit 1
 fi
 
 
