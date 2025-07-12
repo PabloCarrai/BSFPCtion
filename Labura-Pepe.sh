@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  Variables con la info del proxy
-CNT="http_proxy=\"$1\" \nhttps_proxy=\"$1\"\nHTTP_PROXY=\"$1\"\nHTTPS_PROXY=\"$1\"\n"
+CNT="http_proxy=\"$1\"\nhttps_proxy=\"$1\"\nno_proxy=\"$2\"\nHTTP_PROXY=\"$1\"\nHTTPS_PROXY=\"$1\"\nNO_PROXY=\"$2\""
 #   Uno de los archivos a tocar es este
 FILE="/etc/environment"
 FAPT="/etc/apt/apt.conf.d/proxy"
