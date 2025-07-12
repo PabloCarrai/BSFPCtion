@@ -1,13 +1,11 @@
 #!/bin/bash
 
 #  Variables con la info del proxy
-VALOR="http_proxy $1"
-VALOR1="https_proxy $1"
-CNT="http_proxy $1\nhttps_proxy $1\nHTTP_PROXY $1\nHTTPS_PROXY $1"
+CNT="http_proxy=\"$1\" \nhttps_proxy=\"$1\"\nHTTP_PROXY=\"$1\"\nHTTPS_PROXY=\"$1\"\n"
 #   Uno de los archivos a tocar es este
 FILE="/etc/environment"
-FAPT="/etc/apt/apt.conf"
-CNT1="Acquire::http::Proxy \"$1\";\nAcquire::https::Proxy \"$1\";\nAcquire::ftp::Proxy \"$1\";\n"
+FAPT="/etc/apt/apt.conf.d/proxy"
+CNT1="Acquire::http::Proxy \"$1\";\nAcquire::https::Proxy \"$1\";"
 
 #   Necesitamos o ser root o tener sudo
 if [[ "$EUID" -ne 0 ]]
