@@ -8,7 +8,7 @@ fi
 
 #   Los archivos a unas variables
 FILE="/etc/environment"
-FAPT="/etc/apt/apt.conf"
+FAPT="/etc/apt/apt.conf.d/proxy"
 #   Chequeo si existen
 if [ -e $FILE ] && [ -e $FAPT ] 
 then 
